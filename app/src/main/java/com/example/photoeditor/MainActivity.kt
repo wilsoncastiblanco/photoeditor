@@ -13,9 +13,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
 
-class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
-
-    val photosAdapter = PhotosAdapter()
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,23 +21,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
         setSupportActionBar(main_toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-
-        setupUi()
-
-        getPhotos()
     }
-
-    private fun getPhotos() {
-        launch {
-            val photos = photosService().fetchPhotos()
-            photosAdapter.submitList(photos)
-        }
-    }
-
-    private fun setupUi() {
-        recycler_view_photos.layoutManager = LinearLayoutManager(applicationContext)
-        recycler_view_photos.adapter = photosAdapter
-    }
-
 
 }

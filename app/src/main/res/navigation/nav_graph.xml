@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/photosFragment">
+
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.example.photoeditor.PhotosFragment"
+        android:label="fragment_photos"
+        tools:layout="@layout/fragment_photos">
+        <action
+            android:id="@+id/action_photosFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="com.example.photoeditor.PhotoDetailFragment"
+        android:label="fragment_photo_detail"
+        tools:layout="@layout/fragment_photo_detail">
+        <argument
+            android:name="photo"
+            app:argType="com.example.photoeditor.Photo" />
+        <action
+            android:id="@+id/action_photoDetailFragment_to_photoEditedFragment"
+            app:destination="@id/photoEditedFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/photoEditedFragment"
+        android:name="com.example.photoeditor.PhotoEditedFragment"
+        android:label="fragment_photo_edited"
+        tools:layout="@layout/fragment_photo_edited">
+        <argument
+            android:name="photo_edited"
+            app:argType="android.graphics.Bitmap[]" />
+    </fragment>
+
+
+</navigation>

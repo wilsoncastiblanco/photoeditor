@@ -3,6 +3,7 @@ package com.example.photoeditor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +33,11 @@ class PhotosAdapter : ListAdapter<Photo, PhotosAdapter.PhotoViewHolder>(PhotoDif
                 .centerCrop()
                 .placeholder(R.drawable.ic_placeholder_image)
                 .into(itemView.image_view_photo)
+
+            itemView.setOnClickListener {
+                val direction = PhotosFragmentDirections.actionPhotosFragmentToPhotoDetailFragment(photo)
+                it.findNavController().navigate(direction)
+            }
         }
     }
 }
